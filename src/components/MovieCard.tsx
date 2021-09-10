@@ -1,36 +1,40 @@
-import { Star, Clock } from 'react-feather';
+import { Star, Clock } from "react-feather";
 
-import '../styles/movie-card.scss';
+import "../styles/movie-card.scss";
 
 interface MovieCardProps {
   title: string;
   poster: string;
   rating: string;
   runtime: string;
+  style?: React.CSSProperties;
 }
 
-export function MovieCard(props: MovieCardProps) {
+export function MovieCard({
+  title,
+  poster,
+  rating,
+  runtime,
+  style = {},
+}: MovieCardProps) {
   return (
-    <div className="movie-card">
-      <img
-        src={props.poster}
-        alt={props.title}
-      />
+    <div className="movie-card" style={style}>
+      <img src={poster} alt={title} />
 
       <div>
         <div className="movie-info">
-          <span>{props.title}</span>
+          <span>{title}</span>
           <div className="meta">
             <div>
-              <Star /> {props.rating}
+              <Star /> {rating}
             </div>
 
             <div>
-              <Clock /> {props.runtime}
+              <Clock /> {runtime}
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
